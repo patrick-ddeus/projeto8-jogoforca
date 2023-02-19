@@ -9,7 +9,7 @@ import * as J from "./styles.jsx";
 
 const images = [Forca0, Forca1, Forca2, Forca3, Forca4, Forca5, Forca6];
 
-export default function Jogo ({ palavra, startGame, palavraArray, contadorDeErros, resultado }) {
+export default function Jogo ({ palavra, startGame, palavraArray, contadorDeErros, resultado}) {
 
   return (
     <div>
@@ -20,7 +20,7 @@ export default function Jogo ({ palavra, startGame, palavraArray, contadorDeErro
           <J.EscolherBotao onClick={startGame} disabled={(resultado !== "progresso") ? true : false}>
             Escolher Palavra
           </J.EscolherBotao>
-          <div data-test="word">
+          <div data-test="word" style={{display:`${!palavra ? "none" : "block"}`}}>
             {
               (resultado === "progresso") ?
                 palavraArray.map((letra, index) => (

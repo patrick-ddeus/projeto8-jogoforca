@@ -15,6 +15,11 @@ function App () {
     const palavraSorteada = palavras[numeroAleatorio];
     setPalavra(palavraSorteada);
     setPalavraArray(palavraSorteada.split("").map((_) => "_ "));
+    resetGame()
+  }
+
+  function resetGame(){
+    setcontadorDeErros(0)
   }
 
   return (

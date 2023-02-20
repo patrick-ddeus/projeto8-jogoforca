@@ -14,24 +14,21 @@ export default function Jogo ({ palavra, startGame, palavraArray, contadorDeErro
   return (
     <div>
       <J.Container>
-        <J.Imagem src={images[contadorDeErros]} alt="" />
+        <J.Imagem src={images[contadorDeErros]} alt="" data-test="game-image"/>
 
         <J.BotaoContainer>
-          <J.EscolherBotao onClick={startGame} disabled={(resultado !== "progresso") ? true : false}>
+          <J.EscolherBotao onClick={startGame} disabled={(resultado !== "inicial") ? true : false} data-test="choose-world">
             Escolher Palavra
           </J.EscolherBotao>
           <div data-test="word" style={{display:`${!palavra ? "none" : "block"}`}}>
             {
-              (resultado === "progresso") ?
+              (resultado === "inicial") ?
                 palavraArray.map((letra, index) => (
                   <J.Letra key={index}>{letra}</J.Letra>)) :
-                (resultado === "win") ?
-                  <J.Letra result={"win"}>{palavra}</J.Letra> :
-                  <J.Letra result={"lose"}>{palavra}</J.Letra>
+                  <J.Letra result={resultado}>{palavra}</J.Letra> 
             }
           </div>
         </J.BotaoContainer>
-
       </J.Container>
     </div>
   );

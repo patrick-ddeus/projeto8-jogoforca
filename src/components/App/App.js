@@ -8,7 +8,7 @@ function App () {
   const [palavra, setPalavra] = useState("");
   const [palavraArray, setPalavraArray] = useState([]);
   const [contadorDeErros, setcontadorDeErros] = useState(0);
-  const [resultado, setResultado] = useState("progresso");
+  const [resultado, setResultado] = useState("inicial");
 
   function startGame () {
     const numeroAleatorio = Math.floor(Math.random() * palavras.length);

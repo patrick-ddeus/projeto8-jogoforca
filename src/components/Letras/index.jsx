@@ -15,7 +15,7 @@ function Letras ({palavra, setPalavraArray, palavraArray, contadorDeErros, setco
                 contadorDeErros={contadorDeErros}
                 setcontadorDeErros={setcontadorDeErros}
                 setResultado={setResultado}
-                inGame={resultado !== "progresso" ? false : true}
+                inGame={resultado !== "inicial" ? false : true}
                 />
                 
             ))}

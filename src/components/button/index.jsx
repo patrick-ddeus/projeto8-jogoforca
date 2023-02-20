@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ButtonWrapper } from "./styles";
 
-export default function Button ({ value, palavra, palavraArray, setPalavraArray, contadorDeErros, setcontadorDeErros, setResultado, inGame,  }) {
+export default function Button ({ value, palavra, palavraArray, setPalavraArray, contadorDeErros, setcontadorDeErros, setResultado, inGame}) {
     const [isEnable, setIsEnable] = useState(true)
 
     function handleButtonClick (event) {
@@ -32,7 +32,7 @@ export default function Button ({ value, palavra, palavraArray, setPalavraArray,
     }
 
     return (
-        <ButtonWrapper active={isEnable && inGame && palavra} onClick={handleButtonClick} disabled={(isEnable && inGame && palavra) ? false : true}>
+        <ButtonWrapper active={isEnable && inGame && palavra} onClick={handleButtonClick} disabled={(isEnable && inGame && palavra) ? false : true} data-test="letter">
             {value}
         </ButtonWrapper>
     );

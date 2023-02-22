@@ -18,7 +18,6 @@ function App () {
     setPalavra(palavraSorteadaSemEspecial);
     setPalavraArray(palavraSorteadaSemEspecial.split("").map((_) => "_ "));
     resetGame();
-    console.log(palavraSorteadaSemEspecial)
   }
 
   function sorteaPalavra () {

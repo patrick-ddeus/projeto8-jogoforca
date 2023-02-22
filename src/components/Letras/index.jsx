@@ -4,7 +4,6 @@ const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m
 function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setcontadorDeErros, resultado, setResultado, botoesPressionados, setBotoesPressionados }) {
     const inGame = (resultado === "inicial" ? false : true)
     function handleButtonClick (event) {
-        console.log("foi")
         const currentLetter = event.currentTarget.innerText.toLowerCase();
         const contador = contadorDeErros + 1;
 

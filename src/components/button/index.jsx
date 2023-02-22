@@ -8,8 +8,6 @@ export default function Button ({ value, palavra, palavraArray, setPalavraArray,
         if(!(botoesPressionados.includes(event.currentTarget.innerText))){
             setBotoesPressionados([...botoesPressionados, event.currentTarget.innerText])
         }
-
-        console.log(botoesPressionados)
         setIsEnable(false);
        
         const currentLetter = event.currentTarget.innerText.toLowerCase();

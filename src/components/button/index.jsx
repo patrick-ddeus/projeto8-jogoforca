@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { ButtonWrapper } from "./styles";
 
-export default function Button ({ value, palavra, palavraArray, setPalavraArray, contadorDeErros, setcontadorDeErros, setResultado, inGame}) {
+export default function Button ({ value, palavra, palavraArray, setPalavraArray, contadorDeErros, setcontadorDeErros, setResultado, inGame, botoesPressionados, setBotoesPressionados}) {
     const [isEnable, setIsEnable] = useState(true)
 
     function handleButtonClick (event) {
+        if(!(botoesPressionados.includes(event.currentTarget.innerText))){
+            setBotoesPressionados([...botoesPressionados, event.currentTarget.innerText])
+        }
+
+        console.log(botoesPressionados)
         setIsEnable(false);
        
         const currentLetter = event.currentTarget.innerText.toLowerCase();
@@ -32,7 +37,7 @@ export default function Button ({ value, palavra, palavraArray, setPalavraArray,
     }
 
     return (
-        <ButtonWrapper active={isEnable && inGame && palavra} onClick={handleButtonClick} disabled={(isEnable && inGame && palavra) ? false : true} data-test="letter">
+        <ButtonWrapper active={botoesPressionados.includes(value)} onClick={handleButtonClick} disabled={(inGame && palavra) ? false : true} data-test="letter">
             {value}
         </ButtonWrapper>
     );

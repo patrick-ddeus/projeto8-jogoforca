@@ -9,10 +9,12 @@ function App () {
   const [palavraArray, setPalavraArray] = useState([]);
   const [contadorDeErros, setcontadorDeErros] = useState(0);
   const [resultado, setResultado] = useState("inicial");
+  const [botoesPressionados, setBotoesPressionados] = useState([])
 
   function startGame () {
     const numeroAleatorio = Math.floor(Math.random() * palavras.length);
     const palavraSorteada = palavras[numeroAleatorio];
+    setResultado("progresso")
     setPalavra(palavraSorteada);
     setPalavraArray(palavraSorteada.split("").map((_) => "_ "));
     resetGame()
@@ -20,6 +22,8 @@ function App () {
 
   function resetGame(){
     setcontadorDeErros(0)
+    setResultado("inicial")
+    setBotoesPressionados([])
   }
 
   return (
@@ -42,6 +46,8 @@ function App () {
             setcontadorDeErros={setcontadorDeErros}
             resultado={resultado}
             setResultado={setResultado}
+            botoesPressionados={botoesPressionados}
+            setBotoesPressionados={setBotoesPressionados}
           />
 
         </StylesApp.LetrasWrapper>

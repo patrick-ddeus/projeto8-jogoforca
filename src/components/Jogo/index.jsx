@@ -17,7 +17,7 @@ export default function Jogo ({ palavra, startGame, palavraArray, contadorDeErro
         <J.Imagem src={images[contadorDeErros]} alt="" data-test="game-image"/>
 
         <J.BotaoContainer>
-          <J.EscolherBotao onClick={startGame} disabled={(resultado !== "inicial") ? true : false} data-test="choose-world">
+          <J.EscolherBotao onClick={startGame} data-test="choose-world">
             Escolher Palavra
           </J.EscolherBotao>
           <div data-test="word" style={{display:`${!palavra ? "none" : "block"}`}}>

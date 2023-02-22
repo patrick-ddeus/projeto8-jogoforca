@@ -1,23 +1,50 @@
-import Button from '../button';
-
+import { useState } from "react";
+import { ButtonWrapper } from '../button/styles';
 const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-function Letras ({palavra, setPalavraArray, palavraArray, contadorDeErros, setcontadorDeErros, resultado, setResultado}) {
+function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setcontadorDeErros, resultado, setResultado, botoesPressionados, setBotoesPressionados }) {
+    const inGame = (resultado !== "inicial" ? false : true)
+    function handleButtonClick (event) {
+        const currentLetter = event.currentTarget.innerText.toLowerCase();
+        const contador = contadorDeErros + 1;
+
+        if (!(botoesPressionados.includes(currentLetter))) {
+            setBotoesPressionados([...botoesPressionados, currentLetter]);
+        }
+        const transformedArray = palavraArray.map((backslash, index) => {
+            if (currentLetter === palavra[index]) {
+                return currentLetter;
+            }
+            return backslash;
+        });
+
+        setPalavraArray(transformedArray);
+
+        if (!(palavra.includes(currentLetter))) {
+            setcontadorDeErros((previousState) => previousState + 1);
+        }
+
+        if (transformedArray.join("") === palavra) {
+            setResultado("win");
+        }
+        
+        if (contador === 6) {
+            setResultado("lose");
+        }
+    }
+
     return (
         <div>
             {alfabeto.map(letra => (
-                <Button 
-                value={letra} 
-                key={letra} 
-                palavra={palavra} 
-                palavraArray={palavraArray} 
-                setPalavraArray={setPalavraArray}
-                contadorDeErros={contadorDeErros}
-                setcontadorDeErros={setcontadorDeErros}
-                setResultado={setResultado}
-                inGame={resultado !== "inicial" ? false : true}
-                />
-                
+                <ButtonWrapper
+                    desatived={botoesPressionados.includes(letra) || !palavra}
+                    onClick={handleButtonClick} 
+                    disabled={(inGame && palavra) ? false : true}
+                    data-test="letter"
+                    key={letra}
+                >
+                    {letra}
+                </ButtonWrapper>
             ))}
         </div>
     );

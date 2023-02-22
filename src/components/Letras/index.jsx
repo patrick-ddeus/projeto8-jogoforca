@@ -7,8 +7,6 @@ function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setc
         const currentLetter = event.currentTarget.innerText.toLowerCase();
         const palavraSemEspecial = palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         const contador = contadorDeErros + 1;
-        console.log(palavra)
-        console.log(palavraSemEspecial)
         if (!(botoesPressionados.includes(currentLetter))) {
             setBotoesPressionados([...botoesPressionados, currentLetter]);
         }

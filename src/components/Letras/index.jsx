@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { ButtonWrapper } from '../button/styles';
 const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setcontadorDeErros, resultado, setResultado, botoesPressionados, setBotoesPressionados }) {
-    const inGame = (resultado !== "inicial" ? false : true)
+    const inGame = (resultado === "inicial" ? false : true)
     function handleButtonClick (event) {
+        console.log("foi")
         const currentLetter = event.currentTarget.innerText.toLowerCase();
         const contador = contadorDeErros + 1;
 
@@ -39,7 +39,7 @@ function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setc
                 <ButtonWrapper
                     desatived={botoesPressionados.includes(letra) || !palavra}
                     onClick={handleButtonClick} 
-                    disabled={(inGame && palavra) ? false : true}
+                    disabled={(botoesPressionados.includes(letra) || (inGame || !palavra)) ? true : false}
                     data-test="letter"
                     key={letra}
                 >

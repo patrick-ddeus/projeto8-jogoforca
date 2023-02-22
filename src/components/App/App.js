@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import palavras from "../../palavras";
 import Letras from "../Letras/index.jsx";
 import Jogo from "../Jogo";
+import Chute from "../Chute";
 import * as StylesApp from "./styles.jsx";
 
 function App () {
@@ -9,21 +10,27 @@ function App () {
   const [palavraArray, setPalavraArray] = useState([]);
   const [contadorDeErros, setcontadorDeErros] = useState(0);
   const [resultado, setResultado] = useState("inicial");
-  const [botoesPressionados, setBotoesPressionados] = useState([])
+  const [botoesPressionados, setBotoesPressionados] = useState([]);
 
   function startGame () {
-    const numeroAleatorio = Math.floor(Math.random() * palavras.length);
-    const palavraSorteada = palavras[numeroAleatorio];
-    setResultado("progresso")
-    setPalavra(palavraSorteada);
-    setPalavraArray(palavraSorteada.split("").map((_) => "_ "));
-    resetGame()
+    const palavraSorteadaSemEspecial = sorteaPalavra();
+    setResultado("progresso");
+    setPalavra(palavraSorteadaSemEspecial);
+    setPalavraArray(palavraSorteadaSemEspecial.split("").map((_) => "_ "));
+    resetGame();
+    console.log(palavraSorteadaSemEspecial)
   }
 
-  function resetGame(){
-    setcontadorDeErros(0)
-    setResultado("inicial")
-    setBotoesPressionados([])
+  function sorteaPalavra () {
+    const numeroAleatorio = Math.floor(Math.random() * palavras.length);
+    const palavraSorteada = palavras[numeroAleatorio];
+    return palavraSorteada.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function resetGame () {
+    setcontadorDeErros(0);
+    setResultado("inicial");
+    setBotoesPressionados([]);
   }
 
   return (
@@ -49,9 +56,13 @@ function App () {
             botoesPressionados={botoesPressionados}
             setBotoesPressionados={setBotoesPressionados}
           />
-
         </StylesApp.LetrasWrapper>
 
+        <Chute 
+          palavra={palavra}
+          setResultado={setResultado}
+          setcontadorDeErros={setcontadorDeErros}
+        />
       </StylesApp.Container>
     </>
   );

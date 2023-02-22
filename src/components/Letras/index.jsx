@@ -1,8 +1,8 @@
-import { ButtonWrapper } from '../button/styles';
+import { ButtonWrapper } from './styles';
 const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setcontadorDeErros, resultado, setResultado, botoesPressionados, setBotoesPressionados }) {
-    const inGame = (resultado === "inicial" ? false : true)
+    const inGame = (resultado === "inicial" ? false : true);
     function handleButtonClick (event) {
         const currentLetter = event.currentTarget.innerText.toLowerCase();
         const contador = contadorDeErros + 1;
@@ -26,7 +26,7 @@ function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setc
         if (transformedArray.join("") === palavra) {
             setResultado("win");
         }
-        
+
         if (contador === 6) {
             setResultado("lose");
         }
@@ -37,7 +37,7 @@ function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setc
             {alfabeto.map(letra => (
                 <ButtonWrapper
                     desatived={botoesPressionados.includes(letra) || !palavra}
-                    onClick={handleButtonClick} 
+                    onClick={handleButtonClick}
                     disabled={(botoesPressionados.includes(letra) || (inGame || !palavra)) ? true : false}
                     data-test="letter"
                     key={letra}

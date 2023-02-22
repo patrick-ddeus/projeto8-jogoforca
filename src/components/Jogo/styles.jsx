@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Imagem = styled.img`
     width:350px;
@@ -31,5 +31,5 @@ export const BotaoContainer = styled.div`
 
 export const Letra = styled.span`
   font-size:33px;
-  color:${({result}) => result === "lose" ? "red" : result === "win" ? "green" : result === "progresso" ? "black" : "black"}
+  color:${({ result }) => result === "lose" ? "red" : result === "win" ? "green" : "black"}
 `;

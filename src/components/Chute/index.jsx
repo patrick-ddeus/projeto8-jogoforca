@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, InputGuess, ButtonGuess } from './styles';
 
-export default function Chute ({ palavra, setResultado, setcontadorDeErros }) {
+export default function Chute ({ palavra, resultado, setResultado, setcontadorDeErros }) {
     const [inputValue, setInputValue] = React.useState("");
 
     function handleButtonGuess () {
@@ -22,10 +22,12 @@ export default function Chute ({ palavra, setResultado, setcontadorDeErros }) {
                 data-test="guess-input"
                 value={inputValue}
                 onChange={(e) => { setInputValue(e.currentTarget.value); }}
+                disabled={(!palavra || (resultado === "win" || resultado === "lose")) ? true : false}
             />
             <ButtonGuess
                 data-test="guess-button"
-                onClick={handleButtonGuess}>
+                onClick={handleButtonGuess}
+                disabled={(!palavra || (resultado === "win" || resultado === "lose")) ? true : false}>
                 Chutar
             </ButtonGuess>
         </Container>

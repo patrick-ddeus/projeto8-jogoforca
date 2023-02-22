@@ -57,8 +57,9 @@ function App () {
           />
         </StylesApp.LetrasWrapper>
 
-        <Chute 
+        <Chute
           palavra={palavra}
+          resultado={resultado}
           setResultado={setResultado}
           setcontadorDeErros={setcontadorDeErros}
         />

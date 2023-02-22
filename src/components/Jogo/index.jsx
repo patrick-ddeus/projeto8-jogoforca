@@ -9,23 +9,24 @@ import * as J from "./styles.jsx";
 
 const images = [Forca0, Forca1, Forca2, Forca3, Forca4, Forca5, Forca6];
 
-export default function Jogo ({ palavra, startGame, palavraArray, contadorDeErros, resultado}) {
+export default function Jogo ({ palavra, startGame, palavraArray, contadorDeErros, resultado }) {
 
   return (
     <div>
       <J.Container>
-        <J.Imagem src={images[contadorDeErros]} alt="" data-test="game-image"/>
+        <J.Imagem src={images[contadorDeErros]} alt="" data-test="game-image" />
 
         <J.BotaoContainer>
           <J.EscolherBotao onClick={startGame} data-test="choose-world">
             Escolher Palavra
           </J.EscolherBotao>
-          <div data-test="word" style={{display:`${!palavra ? "none" : "block"}`}}>
+          <div data-test="word" style={{ display: `${!palavra ? "none" : "block"}` }}>
             {
-              (resultado === "inicial") ?
+              (resultado === "ongoing") ?
                 palavraArray.map((letra, index) => (
-                  <J.Letra key={index}>{letra}</J.Letra>)) :
-                  <J.Letra result={resultado}>{palavra}</J.Letra> 
+                  <J.Letra key={index}>{letra}</J.Letra>)
+                ) :
+                <J.Letra result={resultado}>{palavra}</J.Letra>
             }
           </div>
         </J.BotaoContainer>

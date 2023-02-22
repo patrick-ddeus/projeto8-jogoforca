@@ -9,12 +9,11 @@ function App () {
   const [palavra, setPalavra] = useState("");
   const [palavraArray, setPalavraArray] = useState([]);
   const [contadorDeErros, setcontadorDeErros] = useState(0);
-  const [resultado, setResultado] = useState("inicial");
+  const [resultado, setResultado] = useState("ongoing");
   const [botoesPressionados, setBotoesPressionados] = useState([]);
 
   function startGame () {
     const palavraSorteadaSemEspecial = sorteaPalavra();
-    setResultado("progresso");
     setPalavra(palavraSorteadaSemEspecial);
     setPalavraArray(palavraSorteadaSemEspecial.split("").map((_) => "_ "));
     resetGame();
@@ -23,12 +22,12 @@ function App () {
   function sorteaPalavra () {
     const numeroAleatorio = Math.floor(Math.random() * palavras.length);
     const palavraSorteada = palavras[numeroAleatorio];
-    return palavraSorteada.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return palavraSorteada.normalize("NFD").replace(/[\u0300-\u0301\u0308\u0302\u00e7]/g, "");
   }
 
   function resetGame () {
     setcontadorDeErros(0);
-    setResultado("inicial");
+    setResultado("ongoing");
     setBotoesPressionados([]);
   }
 

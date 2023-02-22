@@ -2,7 +2,7 @@ import { ButtonWrapper } from './styles';
 const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setcontadorDeErros, resultado, setResultado, botoesPressionados, setBotoesPressionados }) {
-    const inGame = (resultado === "inicial" ? false : true);
+    const inGame = (resultado === "ongoing" ? false : true);
     function handleButtonClick (event) {
         const currentLetter = event.currentTarget.innerText.toLowerCase();
         const contador = contadorDeErros + 1;

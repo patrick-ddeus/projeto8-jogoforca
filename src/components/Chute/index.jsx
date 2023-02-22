@@ -13,6 +13,7 @@ export default function Chute ({ palavra, resultado, setResultado, setcontadorDe
             setResultado("lose");
             setcontadorDeErros(6);
         }
+        setInputValue("")
     }
 
     return (

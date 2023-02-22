@@ -5,14 +5,16 @@ function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setc
     const inGame = (resultado === "ongoing" ? false : true);
     function handleButtonClick (event) {
         const currentLetter = event.currentTarget.innerText.toLowerCase();
+        const palavraSemEspecial = palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         const contador = contadorDeErros + 1;
-
+        console.log(palavra)
+        console.log(palavraSemEspecial)
         if (!(botoesPressionados.includes(currentLetter))) {
             setBotoesPressionados([...botoesPressionados, currentLetter]);
         }
         const transformedArray = palavraArray.map((backslash, index) => {
-            if (currentLetter === palavra[index]) {
-                return currentLetter;
+            if (currentLetter === palavraSemEspecial[index]) {
+                return palavra[index];
             }
             return backslash;
         });

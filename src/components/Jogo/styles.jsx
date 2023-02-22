@@ -30,6 +30,8 @@ export const BotaoContainer = styled.div`
 `;
 
 export const Letra = styled.span`
-  font-size:33px;
+  font-size:50px;
+  font-weight:700;
+  font-family: 'Noto Sans', sans-serif;
   color:${({ result }) => result === "lose" ? "red" : result === "win" ? "green" : "black"}
 `;

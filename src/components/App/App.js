@@ -13,16 +13,16 @@ function App () {
   const [botoesPressionados, setBotoesPressionados] = useState([]);
 
   function startGame () {
-    const palavraSorteadaSemEspecial = sorteaPalavra();
-    setPalavra(palavraSorteadaSemEspecial);
-    setPalavraArray(palavraSorteadaSemEspecial.split("").map((_) => "_ "));
+    const palavraSorteada = sorteaPalavra();
+    setPalavra(palavraSorteada);
+    setPalavraArray(palavraSorteada.split("").map((_) => "_ "));
     resetGame();
   }
 
   function sorteaPalavra () {
     const numeroAleatorio = Math.floor(Math.random() * palavras.length);
     const palavraSorteada = palavras[numeroAleatorio];
-    return palavraSorteada.normalize("NFD").replace(/[\u0300-\u0301\u0308\u0302\u00e7]/g, "");
+    return palavraSorteada
   }
 
   function resetGame () {

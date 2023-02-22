@@ -6,8 +6,9 @@ export default function Chute ({ palavra, resultado, setResultado, setcontadorDe
 
     function handleButtonGuess () {
         const inputSemCaractere = inputValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-        if (inputSemCaractere.toLowerCase() === palavra.toLowerCase()) {
+        const palavraSemCaractere = palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        
+        if (inputSemCaractere.toLowerCase() === palavraSemCaractere.toLowerCase()) {
             setResultado("win");
         } else {
             setResultado("lose");

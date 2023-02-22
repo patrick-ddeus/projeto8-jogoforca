@@ -6,7 +6,7 @@ function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setc
     function handleButtonClick (event) {
         const currentLetter = event.currentTarget.innerText.toLowerCase();
         const palavraSemEspecial = palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        const contador = contadorDeErros + 1;
+
         if (!(botoesPressionados.includes(currentLetter))) {
             setBotoesPressionados([...botoesPressionados, currentLetter]);
         }
@@ -18,7 +18,11 @@ function Letras ({ palavra, setPalavraArray, palavraArray, contadorDeErros, setc
         });
 
         setPalavraArray(transformedArray);
+        validaResultado(transformedArray, currentLetter)
+    }
 
+    function validaResultado(transformedArray, currentLetter){
+        const contador = contadorDeErros + 1;
         if (!(palavra.includes(currentLetter))) {
             setcontadorDeErros((previousState) => previousState + 1);
         }
